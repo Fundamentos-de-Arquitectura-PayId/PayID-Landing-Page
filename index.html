@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="es" class="is-loading">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+          content="PayID — Identidad digital, documentos y pagos en una sola plataforma. Ingeniería de Software, UPC. Curso 15987.">
+    <title>PayID</title>
+    <link rel="icon" type="image/png" href="Imagenes/PayID - Logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .page-loader{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;background:#3A3C40}
+        html.is-loading,html.is-loading body{overflow:hidden}
+    </style>
+</head>
+
+<body>
+
+<div id="pageLoader" class="page-loader" aria-hidden="true">
+    <div class="page-loader__ambient"></div>
+    <div class="page-loader__stage">
+        <div class="page-loader__ring"></div>
+        <div class="page-loader__core">
+            <img src="Imagenes/PayID - Logo.png" alt="PayID" class="page-loader__logo">
+        </div>
+    </div>
+    <p class="page-loader__text">PayID</p>
+</div>
+
+<div class="site-header" id="siteHeader">
+    <div class="site-header__wrap">
+        <nav class="navbar navbar-expand-lg site-header__bar" aria-label="Principal">
+            <a class="navbar-brand d-flex align-items-center" href="#inicio">
+                <img src="Imagenes/PayID - Logo.png" alt="PayID" data-logo>
+            </a>
+            <button class="navbar-toggler border-0 site-header__toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Menú">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="collapse navbar-collapse site-header__collapse" id="navbarNav">
+                <ul class="navbar-nav site-header__links">
+                    <li class="nav-item"><a class="nav-link active" href="#inicio"><span data-i18n="nav_inicio">Inicio</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tecnologia"><span data-i18n="nav_tecnologia">Producto</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sectores"><span data-i18n="nav_sectores">Segmentos</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#nosotros"><span data-i18n="nav_nosotros">Nosotros</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#equipo"><span data-i18n="nav_equipo">Equipo</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#planes"><span data-i18n="nav_planes">Planes</span></a></li>
+                </ul>
+                <div class="site-header__actions">
+                    <div class="lang-switch lang-switch--nav d-flex align-items-center" role="group" data-i18n-aria="lang_group_aria" aria-label="Seleccionar idioma">
+                        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+                        <span class="lang-divider" aria-hidden="true">|</span>
+                        <button type="button" class="lang-btn active" data-lang="es" aria-pressed="true">ES</button>
+                    </div>
+                    <a href="#planes" class="btn-nav-cta btn-hero-sweep">
+                        <span data-i18n="nav_cta">Comienza ahora</span>
+                        <span class="btn-hero-icon" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<header id="inicio" class="hero-section">
+    <video class="hero-video" autoplay muted loop playsinline>
+        <source src="Imagenes/7600407-uhd_3840_2160_25fps.mp4" type="video/mp4">
+    </video>
+    <div class="hero-video-overlay" aria-hidden="true"></div>
+
+    <div class="container h-100 d-flex align-items-center justify-content-center position-relative">
+        <div class="row justify-content-center w-100">
+            <div class="col-lg-10 col-xl-9">
+                <div class="hero-copy" aria-live="polite">
+                    <span id="typing-tagline" class="hero-tagline">Identidad digital · Documentos y pagos</span>
+                    <h1 id="typing-title" class="hero-title">Tu DNI, tus tarjetas y tus trámites en un solo lugar</h1>
+                    <div class="hero-separator"></div>
+                    <p id="typing-desc" class="hero-subtitle">PayID centraliza documentos, recargas de transporte y alertas para que dejes de depender de la billetera física.</p>
+                </div>
+
+                <div class="d-flex justify-content-center mt-4 mt-md-5">
+                    <a href="#planes" id="hero-login" class="btn btn-hero btn-hero-sweep">
+                        <span data-i18n="hero_btn_login">¡Comienza hoy mismo!</span>
+                        <span class="btn-hero-icon" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section id="problema" class="floating-cards-wrapper grid-pattern-bg">
+    <div class="container">
+        <div class="kairo-partners">
+            <div class="kairo-partners__card">
+                <div class="kairo-partners__copy">
+                    <span class="kairo-partners__kicker" data-i18n="about_partners_kicker">Contexto peruano</span>
+                    <p data-i18n-html="about_partners_html">Pensado para conectarse con <em>entidades</em> del Perú</p>
+                </div>
+                <div class="kairo-partners__rail">
+                    <div class="kairo-marquee">
+                        <div class="kairo-marquee__track">
+                            <div class="kairo-marquee__group">
+                                <img class="kairo-marquee__logo" src="Imagenes/Empresas/logo-renniec-removebg-preview.png" alt="RENIEC">
+                                <img class="kairo-marquee__logo" src="Imagenes/Empresas/logo-sunedu-removebg-preview.png" alt="SUNEDU">
+                                <img class="kairo-marquee__logo" src="Imagenes/Empresas/logo-conadis-removebg-preview.png" alt="CONADIS">
+                                <img class="kairo-marquee__logo" src="Imagenes/Empresas/logo-sunat-removebg-preview.png" alt="SUNAT">
+                                <img class="kairo-marquee__logo" src="Imagenes/Empresas/logo-atu-removebg-preview.png" alt="ATU">
+                                <img class="kairo-marquee__logo" src="Imagenes/Empresas/logo-metropolitano-removebg-preview.png" alt="Metropolitano">
+                                <img class="kairo-marquee__logo" src="Imagenes/Empresas/logo-linea1.png" alt="Línea 1">
+                            </div>
+                            <div class="kairo-marquee__group" aria-hidden="true">
+                                <img class="kairo-marquee__logo" src="Imagenes/Empresas/logo-renniec-removebg-preview.png" alt="">
+                                <img class="kairo-marquee__logo" src="Imagenes/Empresas/logo-sunedu-removebg-preview.png" alt="">
+                                <img class="kairo-marquee__logo" src="Imagenes/Empresas/logo-conadis-removebg-preview.png" alt="">
+                                <img class="kairo-marquee__logo" src="Imagenes/Empresas/logo-sunat-removebg-preview.png" alt="">
+                                <img class="kairo-marquee__logo" src="Imagenes/Empresas/logo-atu-removebg-preview.png" alt="">
+                                <img class="kairo-marquee__logo" src="Imagenes/Empresas/logo-metropolitano-removebg-preview.png" alt="">
+                                <img class="kairo-marquee__logo" src="Imagenes/Empresas/logo-linea1.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="nosotros" class="kairo-about">
+    <div class="kairo-about__ambient" aria-hidden="true">
+        <div class="kairo-about__grid-bg"></div>
+    </div>
+    <div class="container kairo-about__wrap">
+        <div class="kairo-about__layout">
+            <div class="kairo-acc" data-kairo-acc>
+                <div class="kairo-acc__heading">
+                    <span data-i18n="about_panel">PayID</span>
+                    <i class="bi bi-chevron-down" aria-hidden="true"></i>
+                </div>
+                <article class="kairo-acc__item is-open" data-kairo-acc-item>
+                    <button type="button" class="kairo-acc__trigger" data-kairo-acc-open>
+                        <span data-i18n="about_mission_t">Misión</span>
+                        <i class="bi bi-plus" aria-hidden="true"></i>
+                    </button>
+                    <div class="kairo-acc__card">
+                        <div class="kairo-acc__card-head">
+                            <h3 data-i18n="about_mission_t">Misión</h3>
+                            <span class="kairo-acc__num">01</span>
+                        </div>
+                        <p data-i18n="about_mission_p">Ofrecer soluciones digitales accesibles para que estudiantes, familias, profesionales y comercios gestionen de forma centralizada y segura sus documentos y operaciones.</p>
+                    </div>
+                </article>
+                <article class="kairo-acc__item" data-kairo-acc-item>
+                    <button type="button" class="kairo-acc__trigger" data-kairo-acc-open>
+                        <span data-i18n="about_vision_t">Visión</span>
+                        <i class="bi bi-plus" aria-hidden="true"></i>
+                    </button>
+                    <div class="kairo-acc__card">
+                        <div class="kairo-acc__card-head">
+                            <h3 data-i18n="about_vision_t">Visión</h3>
+                            <span class="kairo-acc__num">02</span>
+                        </div>
+                        <p data-i18n="about_vision_p">Ser la plataforma líder en gestión de identidad digital y servicios integrados en Latinoamérica, con seguridad, confianza y acceso desde cualquier dispositivo.</p>
+                    </div>
+                </article>
+                <article class="kairo-acc__item" data-kairo-acc-item>
+                    <button type="button" class="kairo-acc__trigger" data-kairo-acc-open>
+                        <span data-i18n="about_acc3_t">Equipo y curso</span>
+                        <i class="bi bi-plus" aria-hidden="true"></i>
+                    </button>
+                    <div class="kairo-acc__card">
+                        <div class="kairo-acc__card-head">
+                            <h3 data-i18n="about_acc3_t">Equipo y curso</h3>
+                            <span class="kairo-acc__num">03</span>
+                        </div>
+                        <p data-i18n="about_acc3_p">Equipo de Ingeniería de Software de la UPC. Curso Fundamentos de Arquitectura de Software (15987), ciclo 2620. Docente: Wilder Aurelio Vega Calero.</p>
+                    </div>
+                </article>
+                <article class="kairo-acc__item" data-kairo-acc-item>
+                    <button type="button" class="kairo-acc__trigger" data-kairo-acc-open>
+                        <span data-i18n="about_acc4_t">Seguridad y confianza</span>
+                        <i class="bi bi-plus" aria-hidden="true"></i>
+                    </button>
+                    <div class="kairo-acc__card">
+                        <div class="kairo-acc__card-head">
+                            <h3 data-i18n="about_acc4_t">Seguridad y confianza</h3>
+                            <span class="kairo-acc__num">04</span>
+                        </div>
+                        <p data-i18n="about_acc4_p">Biometría, cifrado y modo offline para documentos verificados, alineados a la Ley N.° 29733 de Protección de Datos Personales.</p>
+                    </div>
+                </article>
+            </div>
+            <div class="kairo-about__copy">
+                <span class="kairo-about__kicker" data-i18n="about_kicker">El proyecto</span>
+                <h2 data-i18n="about_h2">Identidad, documentos y pagos en una sola plataforma</h2>
+                <p data-i18n-html="about_lead_html">
+                    <strong>PayID</strong> es la startup del equipo de <strong>Ingeniería de Software de la UPC</strong> (curso <strong>15987 – Fundamentos de Arquitectura de Software</strong>). Centraliza DNI, carné universitario, credenciales de pago y recargas de transporte, con acceso seguro desde el celular.
+                </p>
+                <a href="#equipo" class="kairo-about__cta btn-hero-sweep">
+                    <span data-i18n="about_cta">Conoce al equipo</span>
+                    <span class="btn-hero-icon" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="kairo-expand" data-video-expand-section aria-labelledby="kairo-expand-title">
+    <div class="kairo-expand__sticky" data-video-expand-sticky>
+        <div class="kairo-expand__ambient" aria-hidden="true">
+            <div class="kairo-expand__grid"></div>
+        </div>
+        <div class="kairo-expand__intro">
+            <div class="kairo-expand__intro-content">
+                <h2 class="kairo-expand__intro-text" id="kairo-expand-title" data-kairo-expand-copy data-i18n="expand_intro">Cada fila, cada documento vencido y cada tarjeta olvidada es tiempo que no recuperas.</h2>
+            </div>
+            <div class="kairo-expand__placeholder" data-video-expand-placeholder></div>
+        </div>
+        <figure class="kairo-expand__media" data-video-expand-media>
+            <video class="kairo-expand__video" autoplay muted loop playsinline>
+                <source src="Imagenes/5103993-uhd_3840_2160_30fps.mp4" type="video/mp4">
+            </video>
+            <figcaption class="kairo-expand__caption" data-video-expand-caption>
+                <p class="kairo-expand__caption-text" data-i18n="expand_caption">PayID reúne identidad, transporte y trámites en una sola vista para actuar antes de un vencimiento o un saldo en cero.</p>
+                <span class="kairo-expand__caption-info" aria-hidden="true"><i class="bi bi-info"></i></span>
+            </figcaption>
+        </figure>
+    </div>
+</section>
+
+<section id="tecnologia" class="bg-light">
+    <div class="container">
+        <div class="section-title text-center mb-5">
+            <div class="bg-text-watermark reveal-watermark" data-i18n="tech_wm">TU BÓVEDA</div>
+            <span class="text-orange fw-bold text-uppercase letter-spacing-2 reveal-item" data-i18n="tech_kicker">Todo en un lugar</span>
+            <h2 class="display-5 fw-bold mt-2 reveal-item" data-i18n="tech_h2">Lo que resuelve PayID</h2>
+            <p class="text-muted mx-auto reveal-item" style="max-width: 700px;" data-i18n="tech_lead">
+                Una plataforma para registrar documentos, recargar transporte, pagar servicios y recibir alertas antes de que un trámite se complique.
+            </p>
+        </div>
+
+        <div class="offer-carousel mb-5" data-offer-carousel>
+            <button type="button" class="offer-carousel__btn offer-carousel__btn--prev" data-offer-prev aria-label="Anterior">
+                <i class="bi bi-chevron-left"></i>
+            </button>
+            <div class="offer-carousel__viewport">
+                <div class="offer-carousel__track" data-offer-track>
+                    <article class="offer-card">
+                        <figure class="offer-card__photo">
+                            <img src="Imagenes/Cards/card-identidad.jpg" alt="Identidad digital en el celular" data-offer-image>
+                            <div class="offer-card__icon"><i class="bi bi-person-vcard"></i></div>
+                        </figure>
+                        <div class="offer-card__body">
+                            <h4 data-i18n="tech_f1h">Identidad digital</h4>
+                            <p data-i18n="tech_f1p">DNI, pasaporte, licencia, carné universitario y carné CONADIS disponibles desde el celular.</p>
+                        </div>
+                    </article>
+                    <article class="offer-card">
+                        <figure class="offer-card__photo">
+                            <img src="Imagenes/Cards/card-transporte.jpg" alt="Recarga de transporte" data-offer-image>
+                            <div class="offer-card__icon"><i class="bi bi-bus-front"></i></div>
+                        </figure>
+                        <div class="offer-card__body">
+                            <h4 data-i18n="tech_f2h">Recarga de transporte</h4>
+                            <p data-i18n="tech_f2p">Saldo y recarga de la tarjeta del Metropolitano y de la Línea 1 sin hacer cola en estación.</p>
+                        </div>
+                    </article>
+                    <article class="offer-card">
+                        <figure class="offer-card__photo">
+                            <img src="Imagenes/Cards/card-alertas.jpg" alt="Alertas en el celular" data-offer-image>
+                            <div class="offer-card__icon"><i class="bi bi-bell"></i></div>
+                        </figure>
+                        <div class="offer-card__body">
+                            <h4 data-i18n="tech_f3h">Alertas inteligentes</h4>
+                            <p data-i18n="tech_f3p">Avisos de vencimiento de documentos y de saldo bajo para actuar con anticipación.</p>
+                        </div>
+                    </article>
+                    <article class="offer-card">
+                        <figure class="offer-card__photo">
+                            <img src="Imagenes/Cards/card-offline.jpg" alt="Documentos disponibles sin señal" data-offer-image>
+                            <div class="offer-card__icon"><i class="bi bi-wifi-off"></i></div>
+                        </figure>
+                        <div class="offer-card__body">
+                            <h4 data-i18n="tech_f4h">Modo offline</h4>
+                            <p data-i18n="tech_f4p">Documentos ya verificados disponibles aunque no haya señal en el trayecto.</p>
+                        </div>
+                    </article>
+                    <article class="offer-card">
+                        <figure class="offer-card__photo">
+                            <img src="Imagenes/Cards/card-familia.jpg" alt="Perfiles familiares" data-offer-image>
+                            <div class="offer-card__icon"><i class="bi bi-people"></i></div>
+                        </figure>
+                        <div class="offer-card__body">
+                            <h4 data-i18n="tech_f5h">Perfiles familiares</h4>
+                            <p data-i18n="tech_f5p">En el plan premium, documentos de hijos y dependientes en la misma cuenta.</p>
+                        </div>
+                    </article>
+                    <article class="offer-card">
+                        <figure class="offer-card__photo">
+                            <img src="Imagenes/Cards/card-tramites.jpg" alt="Asistente de trámites" data-offer-image>
+                            <div class="offer-card__icon"><i class="bi bi-list-check"></i></div>
+                        </figure>
+                        <div class="offer-card__body">
+                            <h4 data-i18n="tech_f6h">Asistente de trámites</h4>
+                            <p data-i18n="tech_f6p">Checklist para renovar DNI, carné universitario o CONADIS sin perder un requisito.</p>
+                        </div>
+                    </article>
+                    <article class="offer-card">
+                        <figure class="offer-card__photo">
+                            <img src="Imagenes/Cards/card-pagos.jpg" alt="Pagos y recargas" data-offer-image>
+                            <div class="offer-card__icon"><i class="bi bi-wallet2"></i></div>
+                        </figure>
+                        <div class="offer-card__body">
+                            <h4 data-i18n="tech_f7h">Pagos y recargas</h4>
+                            <p data-i18n="tech_f7p">Deudas, recarga de celular e historial de movimientos desde el dashboard principal.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <button type="button" class="offer-carousel__btn offer-carousel__btn--next" data-offer-next aria-label="Siguiente">
+                <i class="bi bi-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="product-mosaic">
+            <article class="product-mosaic__media">
+                <video autoplay muted loop playsinline>
+                    <source src="Imagenes/7567365-hd_1920_1080_25fps.mp4" type="video/mp4">
+                </video>
+            </article>
+            <article class="product-mosaic__panel">
+                <p class="product-mosaic__kicker" data-i18n="mosaic_kicker">Lo que buscamos validar</p>
+                <h3 class="product-mosaic__title" data-i18n="mosaic_title">Menos documentos físicos, menos colas y más control de lo que vence.</h3>
+                <ul class="product-mosaic__stats">
+                    <li>
+                        <i class="bi bi-bell" aria-hidden="true"></i>
+                        <strong data-i18n="mosaic_s1v">30 días</strong>
+                        <span data-i18n="mosaic_s1l">Aviso antes del vencimiento de un documento</span>
+                    </li>
+                    <li>
+                        <i class="bi bi-wifi-off" aria-hidden="true"></i>
+                        <strong data-i18n="mosaic_s2v">Offline</strong>
+                        <span data-i18n="mosaic_s2l">Acceso a documentos ya verificados sin señal</span>
+                    </li>
+                    <li>
+                        <i class="bi bi-people" aria-hidden="true"></i>
+                        <strong data-i18n="mosaic_s3v">1 cuenta</strong>
+                        <span data-i18n="mosaic_s3l">Perfiles de hijos y dependientes en premium</span>
+                    </li>
+                    <li>
+                        <i class="bi bi-shield-check" aria-hidden="true"></i>
+                        <strong data-i18n="mosaic_s4v">Ley 29733</strong>
+                        <span data-i18n="mosaic_s4l">Protección de datos personales en el Perú</span>
+                    </li>
+                </ul>
+            </article>
+            <article class="product-mosaic__copy">
+                <p class="product-mosaic__eyebrow" data-i18n="mosaic_eyebrow">Por qué PayID</p>
+                <h3 data-i18n="mosaic_h3">Pagos, identidad y trámites en la misma app</h3>
+                <p data-i18n="mosaic_p">Yape y Plin mueven dinero. ID Perú acredita identidad. Google Wallet guarda tarjetas. PayID reúne documentos, transporte y alertas para el día a día en Lima.</p>
+                <a href="#planes" class="btn btn-hero btn-hero-sweep btn-hero-sweep--light">
+                    <span data-i18n="mosaic_btn">Ver planes</span>
+                    <span class="btn-hero-icon" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+                </a>
+            </article>
+            <article class="product-mosaic__media">
+                <video autoplay muted loop playsinline>
+                    <source src="Imagenes/11158789-hd_3840_2160_30fps.mp4" type="video/mp4">
+                </video>
+            </article>
+    </div>
+
+    <div class="container showcase-wrap">
+        <div class="yt-showcase" data-yt-showcase>
+            <div class="yt-showcase__stage" data-yt-stage>
+                <video autoplay muted loop playsinline>
+                    <source src="Imagenes/5103993-uhd_3840_2160_30fps.mp4" type="video/mp4">
+                </video>
+                <p class="yt-showcase__caption" data-i18n-html="yt_caption">Mira cómo PayID ordena<br>documentos, saldo y trámites</p>
+            </div>
+            <div class="yt-plus-overlay" data-yt-plus-overlay hidden>
+                <div class="yt-plus-overlay__orbit" aria-hidden="true">
+                    <span></span><span></span><span></span>
+                </div>
+                <div class="yt-plus-overlay__card">
+                    <div class="yt-plus-overlay__icon">
+                        <img src="Imagenes/PayID - Logo.png" alt="PayID">
+                    </div>
+                    <h3 data-i18n="yt_plus_h">¿Listo para dejar la billetera física?</h3>
+                    <p data-i18n="yt_plus_p">Revisa el plan gratuito y el premium para centralizar documentos, transporte y alertas.</p>
+                    <a href="#planes" class="btn btn-hero btn-hero-sweep">
+                        <span data-i18n="yt_plus_btn">Ver planes</span>
+                        <span class="btn-hero-icon" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+                    </a>
+                </div>
+            </div>
+            <div class="yt-showcase__controls">
+                <button type="button" class="yt-showcase__chip yt-showcase__chip--yt" data-yt-play aria-label="Reproducir en YouTube">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#FF0000" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.8z"/><path fill="#fff" d="M9.6 15.6V8.4L15.8 12z"/></svg>
+                </button>
+                <button type="button" class="yt-showcase__chip" data-yt-play aria-label="Reproducir video">
+                    <i class="bi bi-play-fill"></i>
+                </button>
+                <button type="button" class="yt-showcase__chip yt-showcase__plus" data-yt-plus aria-label="Obtener la app" aria-expanded="false">
+                    <span class="yt-plus-mark" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="sectores" class="bg-white grid-pattern-bg">
+    <div class="container">
+        <div class="section-title text-center mb-5">
+            <div class="bg-text-watermark reveal-watermark" data-i18n="sec_wm">PERSONAS</div>
+            <span class="text-orange fw-bold text-uppercase letter-spacing-2 reveal-item" data-i18n="sec_kicker">Segmentos objetivo</span>
+            <h2 class="display-5 fw-bold mt-2 reveal-item" data-i18n="sec_h2">Para quien se mueve y para quien organiza el hogar</h2>
+            <p class="text-muted mx-auto reveal-item" style="max-width: 650px;" data-i18n="sec_lead">
+                Dos perfiles del informe: estudiantes que usan transporte público y padres o tutores que cuidan los documentos de la familia.
+            </p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <div class="col-lg-6">
+                <div class="sector-card-premium reveal-zoom">
+                    <div class="sector-img-wrapper">
+                        <img class="sector-img" src="Imagenes/Cards/seg-estudiantes.jpg" alt="Estudiantes universitarios">
+                        <div class="sector-badge orange">
+                            <i class="bi bi-mortarboard"></i> <span data-i18n="sec_b1">18–29 años</span>
+                        </div>
+                    </div>
+                    <div class="sector-floating-icon">
+                        <i class="bi bi-phone"></i>
+                    </div>
+                    <div class="sector-content">
+                        <h3 class="sector-title" data-i18n="sec_t1">Estudiantes universitarios</h3>
+                        <p class="sector-text" data-i18n="sec_p1">
+                            Llevan DNI, carné universitario, tarjeta del Metropolitano y débito. PayID junta todo en el celular para consultar saldo y recargar al instante.
+                        </p>
+                        <div class="sector-tags mb-4">
+                            <span class="tag" data-i18n="sec_tag1a">Transporte</span>
+                            <span class="tag" data-i18n="sec_tag1b">Carné</span>
+                            <span class="tag" data-i18n="sec_tag1c">Saldo bajo</span>
+                        </div>
+                        <div class="sector-footer">
+                            <a href="#contacto" class="sector-link"><span data-i18n="sec_l1">SABER MÁS</span> <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="sector-card-premium reveal-zoom">
+                    <div class="sector-img-wrapper">
+                        <img class="sector-img" src="Imagenes/Cards/seg-padres.jpg" alt="Padres, madres y tutores">
+                        <div class="sector-badge blue">
+                            <i class="bi bi-people"></i> <span data-i18n="sec_b2">25–45 años</span>
+                        </div>
+                    </div>
+                    <div class="sector-floating-icon">
+                        <i class="bi bi-house-heart"></i>
+                    </div>
+                    <div class="sector-content">
+                        <h3 class="sector-title" data-i18n="sec_t2">Padres, madres y tutores</h3>
+                        <p class="sector-text" data-i18n="sec_p2">
+                            Los documentos de los hijos están dispersos: carnés escolares, vacunas, vencimientos. El plan premium los reúne en perfiles separados.
+                        </p>
+                        <div class="sector-tags mb-4">
+                            <span class="tag" data-i18n="sec_tag2a">Familia</span>
+                            <span class="tag" data-i18n="sec_tag2b">Vencimientos</span>
+                            <span class="tag" data-i18n="sec_tag2c">Offline</span>
+                        </div>
+                        <div class="sector-footer">
+                            <a href="#contacto" class="sector-link"><span data-i18n="sec_l2">MÁS INFO</span> <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="kairo-story" data-kairo-story>
+    <div class="kairo-story__ambient" aria-hidden="true">
+        <div class="kairo-story__grid"></div>
+        <div class="kairo-story__glow"></div>
+    </div>
+    <div class="kairo-story__track" data-kairo-story-track>
+        <div class="kairo-story__sticky">
+            <div class="kairo-story__text">
+                <div class="kairo-story__block is-active" data-kairo-story-text="0">
+                    <h2 data-i18n="connect_h2">Documentos, tarjetas y trámites juntos</h2>
+                    <p data-i18n="connect_lead">PayID guarda la identidad verificada, el saldo de transporte y el historial de pagos en el mismo dashboard.</p>
+                </div>
+                <div class="kairo-story__block" data-kairo-story-text="1">
+                    <h2 data-i18n="connect_h2b">Recarga antes de quedarte sin pasaje</h2>
+                    <p data-i18n="connect_leadb">Alertas de saldo bajo y recarga del Metropolitano o la Línea 1 para no volver a la cola de la estación.</p>
+                </div>
+                <div class="kairo-story__block" data-kairo-story-text="2">
+                    <h2 data-i18n="connect_h2c">La familia, en perfiles separados</h2>
+                    <p data-i18n="connect_leadc">El plan premium administra documentos de hijos y dependientes, con acceso offline a lo ya verificado.</p>
+                </div>
+            </div>
+            <div class="kairo-story__cards">
+                <article class="kairo-story__card" data-kairo-story-card="left">
+                    <figure class="kairo-story__media">
+                        <img src="Imagenes/Cards/story-identidad.jpg" alt="Identidad digital">
+                    </figure>
+                    <h3 data-i18n="connect_c1">Identidad</h3>
+                </article>
+                <article class="kairo-story__card kairo-story__card--center is-hero" data-kairo-story-card="center">
+                    <figure class="kairo-story__media">
+                        <img src="Imagenes/Cards/story-transporte.jpg" alt="Recarga de transporte">
+                    </figure>
+                    <h3 data-i18n="connect_c2">Transporte</h3>
+                </article>
+                <article class="kairo-story__card" data-kairo-story-card="right">
+                    <figure class="kairo-story__media">
+                        <img src="Imagenes/Cards/story-familia.jpg" alt="Perfiles familiares">
+                    </figure>
+                    <h3 data-i18n="connect_c3">Familia</h3>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="equipo" class="team-equipo-section py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="team-equipo-kicker d-block mb-2" data-i18n="team_kicker">PAYID</span>
+            <h2 class="display-5 fw-bold mb-2 text-dark" data-i18n="team_h2">Integrantes del equipo</h2>
+            <p class="text-muted mx-auto mb-0 team-equipo-lead" data-i18n="team_lead">
+                Ingeniería de Software · UPC · Fundamentos de Arquitectura de Software
+            </p>
+            <div class="team-equipo-rule mx-auto mt-3 mb-5" aria-hidden="true"></div>
+        </div>
+
+        <div class="team-carousel" data-team-carousel>
+            <div class="team-carousel__viewport">
+                <div class="team-carousel__track" data-team-track>
+                    <article class="team-equipo-card">
+                        <img class="team-equipo-card__badge" src="Imagenes/PayID - Logo.png" alt="PayID">
+                        <div class="team-equipo-card__photo-wrap team-equipo-card__photo-wrap--initials" data-initials="DM">
+                            <span>DM</span>
+                        </div>
+                        <p class="team-equipo-card__name">Dhilsen Mallqui Vilca</p>
+                        <p class="team-equipo-card__role">Backend · 7.º ciclo</p>
+                        <div class="team-equipo-card__hover">
+                            <p class="team-equipo-card__bio" data-i18n="team_b1">C#, Python y JavaScript. APIs REST, Clean Code y SOLID para una arquitectura que escale.</p>
+                        </div>
+                    </article>
+                    <article class="team-equipo-card">
+                        <img class="team-equipo-card__badge" src="Imagenes/PayID - Logo.png" alt="PayID">
+                        <div class="team-equipo-card__photo-wrap team-equipo-card__photo-wrap--initials" data-initials="RT">
+                            <span>RT</span>
+                        </div>
+                        <p class="team-equipo-card__name">Raul Hiroshi Tasayco Osorio</p>
+                        <p class="team-equipo-card__role">Frontend · U202319415</p>
+                        <div class="team-equipo-card__hover">
+                            <p class="team-equipo-card__bio" data-i18n="team_b2">Angular, Vue, TypeScript, HTML y CSS. También C++, Python y SQL. 7.º ciclo.</p>
+                        </div>
+                    </article>
+                    <article class="team-equipo-card">
+                        <img class="team-equipo-card__badge" src="Imagenes/PayID - Logo.png" alt="PayID">
+                        <div class="team-equipo-card__photo-wrap team-equipo-card__photo-wrap--initials" data-initials="DB">
+                            <span>DB</span>
+                        </div>
+                        <p class="team-equipo-card__name">Diego Mora Blas</p>
+                        <p class="team-equipo-card__role">Ciberseguridad · 6.º ciclo</p>
+                        <div class="team-equipo-card__hover">
+                            <p class="team-equipo-card__bio" data-i18n="team_b3">Enfoque en ciberseguridad para proteger identidad, documentos y acceso biométrico.</p>
+                        </div>
+                    </article>
+                    <article class="team-equipo-card">
+                        <img class="team-equipo-card__badge" src="Imagenes/PayID - Logo.png" alt="PayID">
+                        <div class="team-equipo-card__photo-wrap team-equipo-card__photo-wrap--initials" data-initials="GT">
+                            <span>GT</span>
+                        </div>
+                        <p class="team-equipo-card__name">Giussepe Taquiri</p>
+                        <p class="team-equipo-card__role">Arquitectura · 7.º ciclo</p>
+                        <div class="team-equipo-card__hover">
+                            <p class="team-equipo-card__bio" data-i18n="team_b4">C#, DDD, Structurizr y MySQL. Móvil con Flutter, Kotlin y Swift para que la arquitectura llegue al código.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="team-carousel__progress" aria-hidden="true">
+                <span data-team-progress></span>
+            </div>
+        </div>
+
+        <div class="team-media" data-team-media>
+            <div class="team-media__switch" role="tablist">
+                <button type="button" class="is-active" data-team-tab="video" data-i18n="team_tab_video">Video</button>
+                <button type="button" data-team-tab="image" data-i18n="team_tab_image">Imagen</button>
+            </div>
+            <div class="team-media__stage is-video" data-team-stage="video">
+                <video autoplay muted loop playsinline>
+                    <source src="Imagenes/11158789-hd_3840_2160_30fps.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="team-media__stage is-image" data-team-stage="image" hidden>
+                <div class="media-pending">
+                    <i class="bi bi-image"></i>
+                    <strong data-i18n="media_image">Espacio para imagen</strong>
+                    <small data-i18n="team_img_soon">Foto del equipo pendiente</small>
+                </div>
+            </div>
+            <p class="team-media__copy" data-team-copy data-i18n="team_media_copy">Dhilsen, Raul, Diego y Giussepe construyen PayID en Fundamentos de Arquitectura de Software: identidad digital, pagos y documentos pensados para el Perú.</p>
+        </div>
+    </div>
+</section>
+
+<section class="kairo-orbit" data-kairo-orbit aria-label="Perspectiva PayID">
+    <div class="kairo-orbit__ambient" aria-hidden="true">
+        <div class="kairo-orbit__glow kairo-orbit__glow--1"></div>
+        <div class="kairo-orbit__glow kairo-orbit__glow--2"></div>
+    </div>
+    <div class="kairo-orbit__center">
+        <div class="kairo-orbit__text-glow" aria-hidden="true"></div>
+        <p class="kairo-orbit__text" data-i18n="orbit_text">PayID junta identidad, transporte y trámites del día a día. Esa combinación, hecha para el Perú, es lo que la distingue de una billetera o de una app de documentos.</p>
+    </div>
+    <div class="kairo-orbit__items" aria-hidden="true">
+        <div class="kairo-orbit__item" data-kairo-orbit-item>
+            <div class="kairo-orbit__item-glow"></div>
+            <div class="kairo-orbit__item-content"><i class="bi bi-person-vcard"></i></div>
+        </div>
+        <div class="kairo-orbit__item" data-kairo-orbit-item>
+            <div class="kairo-orbit__item-glow"></div>
+            <div class="kairo-orbit__item-content"><i class="bi bi-bus-front"></i></div>
+        </div>
+        <div class="kairo-orbit__item" data-kairo-orbit-item>
+            <div class="kairo-orbit__item-glow"></div>
+            <div class="kairo-orbit__item-content"><i class="bi bi-wallet2"></i></div>
+        </div>
+        <div class="kairo-orbit__item" data-kairo-orbit-item>
+            <div class="kairo-orbit__item-glow"></div>
+            <div class="kairo-orbit__item-content"><i class="bi bi-bell-fill"></i></div>
+        </div>
+        <div class="kairo-orbit__item" data-kairo-orbit-item>
+            <div class="kairo-orbit__item-glow"></div>
+            <div class="kairo-orbit__item-content"><i class="bi bi-wifi-off"></i></div>
+        </div>
+        <div class="kairo-orbit__item" data-kairo-orbit-item>
+            <div class="kairo-orbit__item-glow"></div>
+            <div class="kairo-orbit__item-content"><i class="bi bi-people"></i></div>
+        </div>
+        <div class="kairo-orbit__item" data-kairo-orbit-item>
+            <div class="kairo-orbit__item-glow"></div>
+            <div class="kairo-orbit__item-content"><i class="bi bi-list-check"></i></div>
+        </div>
+        <div class="kairo-orbit__item" data-kairo-orbit-item>
+            <div class="kairo-orbit__item-glow"></div>
+            <div class="kairo-orbit__item-content"><i class="bi bi-shield-lock"></i></div>
+        </div>
+    </div>
+</section>
+
+<section id="planes" class="pricing-section-premium grid-pattern-bg">
+    <div class="container">
+        <div class="section-title text-center mb-5">
+            <div class="bg-text-watermark reveal-watermark" data-i18n="plan_wm">FREEMIUM</div>
+            <span class="text-orange fw-bold text-uppercase letter-spacing-2 reveal-item" data-i18n="plan_kicker">Modelo freemium</span>
+            <h2 class="display-5 fw-bold mt-2 reveal-item" data-i18n="plan_h2">Planes de PayID</h2>
+            <p class="text-muted mx-auto mb-4 reveal-item" style="max-width: 650px;" data-i18n="plan_lead">
+                Lo básico es gratis. El premium suma alertas avanzadas y perfiles familiares. La referencia de S/ 15 sale de la disposición de pago que vimos en las entrevistas.
+            </p>
+        </div>
+
+        <div class="pricing-fan" data-pricing-fan>
+            <div class="pricing-fan__viewport" data-pricing-fan-viewport>
+                <div class="pricing-fan__deck">
+                    <article class="pricing-card-white" data-pricing-fan-card>
+                        <div class="pricing-header">
+                            <span class="plan-name" data-i18n="plan_pilot">BÁSICO</span>
+                            <div class="plan-price">S/ 0<span class="price-period" data-i18n="plan_period">/mes</span></div>
+                            <p class="plan-desc" data-i18n="plan_d0">Para guardar DNI, carné y pasaporte en un solo perfil, con el dashboard principal.</p>
+                        </div>
+                        <div class="pricing-divider"></div>
+                        <ul class="pricing-features">
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> <span data-i18n="plan0_f1">Documentos personales</span></li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> <span data-i18n="plan0_f2">Dashboard principal</span></li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> <span data-i18n="plan0_f3">1 perfil</span></li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> <span data-i18n="plan0_f4">Historial básico</span></li>
+                            <li class="inactive"><i class="bi bi-x-circle-fill"></i> <span data-i18n="plan0_f5">Modo offline</span></li>
+                            <li class="inactive"><i class="bi bi-x-circle-fill"></i> <span data-i18n="plan0_f6">Perfiles familiares</span></li>
+                        </ul>
+                        <div class="pricing-footer">
+                            <a href="#contacto" class="btn btn-outline-pricing" data-i18n="plan0_btn">Empezar gratis</a>
+                        </div>
+                    </article>
+
+                    <article class="pricing-card-white" data-pricing-fan-card>
+                        <div class="pricing-header">
+                            <span class="plan-name" data-i18n="plan_basic">MOVILIDAD</span>
+                            <div class="plan-price">S/ 0<span class="price-period" data-i18n="plan_period">/mes</span></div>
+                            <p class="plan-desc" data-i18n="plan_d1">Para estudiantes que recargan Metropolitano o Línea 1 y no quieren volver a la cola.</p>
+                        </div>
+                        <div class="pricing-divider"></div>
+                        <ul class="pricing-features">
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> <span data-i18n="plan1_f1">Todo lo del plan Básico</span></li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> <span data-i18n="plan1_f2">Recarga de transporte</span></li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> <span data-i18n="plan1_f3">Consulta de saldo</span></li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> <span data-i18n="plan1_f4">Alerta de saldo bajo</span></li>
+                            <li class="inactive"><i class="bi bi-x-circle-fill"></i> <span data-i18n="plan1_f5">Asistente de trámites</span></li>
+                            <li class="inactive"><i class="bi bi-x-circle-fill"></i> <span data-i18n="plan1_f6">Perfiles de hijos</span></li>
+                        </ul>
+                        <div class="pricing-footer">
+                            <a href="#contacto" class="btn btn-outline-pricing" data-i18n="plan1_btn">Elegir Movilidad</a>
+                        </div>
+                    </article>
+
+                    <article class="pricing-card-white highlight" data-pricing-fan-card>
+                        <div class="recommended-badge" data-i18n="plan_rec">RECOMENDADO</div>
+                        <div class="pricing-header">
+                            <span class="plan-name orange-text" data-i18n="plan_pro">PREMIUM</span>
+                            <div class="plan-price">S/ 15<span class="price-period" data-i18n="plan_period">/mes</span></div>
+                            <p class="plan-desc" data-i18n="plan_d2">Alertas avanzadas, modo offline y asistente de trámites. Referencia de las entrevistas: entre S/ 10 y S/ 15.</p>
+                        </div>
+                        <div class="pricing-divider"></div>
+                        <ul class="pricing-features">
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> <span data-i18n="plan2_f1">Todo lo de Movilidad</span></li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> <span data-i18n="plan2_f2">Alertas de vencimiento</span></li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> <span data-i18n="plan2_f3">Modo offline</span></li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> <span data-i18n="plan2_f4">Asistente de trámites</span></li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> <span data-i18n="plan2_f5">Historial completo</span></li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> <span data-i18n="plan2_f6">Pagos y recarga de celular</span></li>
+                        </ul>
+                        <div class="pricing-footer">
+                            <a href="#contacto" class="btn btn-solid-pricing"><span data-i18n="plan2_btn">Elegir Premium</span> <i class="bi bi-arrow-right ms-2"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="pricing-card-white" data-pricing-fan-card>
+                        <div class="pricing-header">
+                            <span class="plan-name" data-i18n="plan_hosp">FAMILIA</span>
+                            <div class="plan-price">S/ 15<span class="price-period" data-i18n="plan_period">/mes</span></div>
+                            <p class="plan-desc" data-i18n="plan_d4">El mismo premium, con perfiles para hijos y dependientes: vacunas, carnés escolares y vencimientos.</p>
+                        </div>
+                        <div class="pricing-divider"></div>
+                        <ul class="pricing-features">
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> <span data-i18n="plan4_f1">Todo lo del Premium</span></li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> <span data-i18n="plan4_f2">Perfiles de hijos</span></li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> <span data-i18n="plan4_f3">Documentos por perfil</span></li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> <span data-i18n="plan4_f4">Alertas por integrante</span></li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> <span data-i18n="plan4_f5">Compartir documentos</span></li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> <span data-i18n="plan4_f6">Offline familiar</span></li>
+                        </ul>
+                        <div class="pricing-footer">
+                            <a href="#contacto" class="btn btn-outline-pricing" data-i18n="plan4_btn">Elegir Familia</a>
+                        </div>
+                    </article>
+
+                    <article class="pricing-card-white" data-pricing-fan-card>
+                        <div class="pricing-header">
+                            <span class="plan-name" data-i18n="plan_prem">ALIANZAS</span>
+                            <div class="plan-price"><span data-i18n="plan_custom">A medida</span></div>
+                            <p class="plan-desc" data-i18n="plan_d3">Para universidades y entidades con las que PayID busca integrarse: RENIEC, SUNEDU, CONADIS y transporte.</p>
+                        </div>
+                        <div class="pricing-divider"></div>
+                        <ul class="pricing-features">
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> <span data-i18n="plan3_f1">Integración institucional</span></li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> <span data-i18n="plan3_f2">Carné universitario</span></li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> <span data-i18n="plan3_f3">Validación de identidad</span></li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> <span data-i18n="plan3_f4">Transporte urbano</span></li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> <span data-i18n="plan3_f5">Campañas con universidades</span></li>
+                            <li class="active"><i class="bi bi-check-circle-fill"></i> <span data-i18n="plan3_f6">Ley N.° 29733</span></li>
+                        </ul>
+                        <div class="pricing-footer">
+                            <a href="#contacto" class="btn btn-outline-pricing"><span data-i18n="plan3_btn">Conversar alianza</span> <i class="bi bi-arrow-right ms-2"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="pricing-bottom-info text-center mt-5 reveal-item">
+            <p class="text-muted small"><i class="bi bi-shield-check text-orange me-2"></i> <span data-i18n="plan_note">Biometría, cifrado y tratamiento de datos alineado a la Ley N.° 29733</span></p>
+        </div>
+    </div>
+</section>
+
+<section id="contacto" class="kairo-cta" data-kairo-cta>
+    <div class="kairo-cta__inner">
+        <span class="kairo-cta__badge" data-kairo-cta-extra data-i18n="cta_v_badge">Empieza hoy</span>
+        <h2 class="kairo-cta__title" data-kairo-cta-reveal data-i18n="cta_v_title">Documentos más seguros.
+Trámites más simples.
+Hecho para quien se mueve cada día.</h2>
+        <p class="kairo-cta__sub" data-kairo-cta-reveal data-i18n="cta_v_sub">PayID reúne identidad, transporte y pagos para estudiantes y familias en el Perú. Menos billetera física, más control.</p>
+        <div class="kairo-cta__actions" data-kairo-cta-extra>
+            <a href="#planes" class="kairo-cta__btn">
+                <span data-i18n="cta_v_btn">Comenzar</span>
+                <span class="kairo-cta__btn-icon" aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
+            </a>
+        </div>
+        <ul class="kairo-cta__perks" data-kairo-cta-extra>
+            <li class="kairo-cta__perk kairo-cta__perk--a">
+                <span class="kairo-cta__perk-icon"><i class="bi bi-unlock"></i></span>
+                <span data-i18n="cta_v_perk1">Plan básico gratis</span>
+            </li>
+            <li class="kairo-cta__perk kairo-cta__perk--b">
+                <span class="kairo-cta__perk-icon"><i class="bi bi-lightning-charge"></i></span>
+                <span data-i18n="cta_v_perk2">Alertas de vencimiento</span>
+            </li>
+            <li class="kairo-cta__perk kairo-cta__perk--c">
+                <span class="kairo-cta__perk-icon"><i class="bi bi-shield-lock"></i></span>
+                <span data-i18n="cta_v_perk3">Ley N.° 29733</span>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<footer class="footer-kairo">
+    <div class="footer-kairo__inner">
+        <div class="footer-kairo__grid">
+            <div class="footer-kairo__brand">
+                <nav class="footer-kairo__titles">
+                    <a href="#tecnologia" data-i18n="nav_tecnologia">Producto</a>
+                    <a href="#sectores" data-i18n="nav_sectores">Segmentos</a>
+                    <a href="#equipo" data-i18n="nav_equipo">Equipo</a>
+                    <a href="#planes" data-i18n="nav_planes">Planes</a>
+                </nav>
+                <p class="footer-kairo__credit" data-i18n="footer_credit">Equipo PayID · Ingeniería de Software · UPC</p>
+            </div>
+            <div class="footer-kairo__mid">
+                <nav class="footer-kairo__links">
+                    <a href="#inicio" data-i18n="nav_inicio">Inicio</a>
+                    <a href="#nosotros" data-i18n="nav_nosotros">Nosotros</a>
+                    <a href="terminos.html" data-i18n="footer_terms">Términos y Condiciones</a>
+                    <a href="#contacto" data-i18n="footer_nav_contact">Contacto</a>
+                </nav>
+                <div class="footer-kairo__chips">
+                    <span><i class="bi bi-geo-alt"></i> UPC · Lima</span>
+                    <span><i class="bi bi-mortarboard"></i> Ciclo 2620</span>
+                </div>
+            </div>
+            <div class="footer-kairo__cta-col">
+                <p class="footer-kairo__lead" data-i18n="footer_cta_lead">Menos documentos físicos. Menos colas. PayID ordena identidad, transporte y trámites en un solo lugar.</p>
+                <a href="#planes" class="footer-kairo__cta">
+                    <span data-i18n="footer_cta_btn">Ver planes de PayID</span>
+                    <span aria-hidden="true">:)</span>
+                </a>
+                <div class="footer-kairo__social">
+                    <span class="footer-kairo__social-label" data-i18n="footer_follow">Síguenos:</span>
+                    <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                </div>
+                <p class="footer-kairo__copy" data-i18n="footer_legal_copy">© 2026 PayID · UPC · Curso 15987. Docente: Wilder Aurelio Vega Calero.</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-physics" data-footer-physics>
+        <div class="footer-physics__world" data-footer-physics-world aria-hidden="true"></div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/script.js"></script>
+</body>
+
+</html>
